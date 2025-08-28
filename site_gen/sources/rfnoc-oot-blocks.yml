@@ -1,0 +1,6 @@
+
+source: git+/home/mbr0wn/src/noc-shop/build/rfnoc-oot-blocks
+gitbranch: main
+title: Ettus Research RFNoC OOT Blocks
+short_title: rfnoc-oot-blocks
+url: https://github.com/EttusResearch/rfnoc-oot-blocks
