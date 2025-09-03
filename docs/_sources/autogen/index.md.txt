@@ -1,0 +1,14 @@
+# The NoC Shop
+
+Welcome to the NoC Shop! This is a collection RFNoC blocks you can use in your applications.
+
+Check out the following repositories containing RFNoC blocks:
+
+
+-  [Core UHD RFNoC Blocks](autogen/uhd.md)
+
+```{toctree}
+:caption: Noc Shop
+
+  autogen/uhd.md
+```

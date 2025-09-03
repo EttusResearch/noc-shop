@@ -1,0 +1,50 @@
+
+# GSI Beam Exciter
+
+**Home page:** [git.gsi.de/p.niedermayer/exciter/](https://git.gsi.de/p.niedermayer/exciter/)
+
+**Git repository:** [git.gsi.de/p.niedermayer/exciter.git](https://git.gsi.de/p.niedermayer/exciter.git)
+
+## RFNoC Blocks
+
+
+- **multiply**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **pulse_counter_trigger**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **discriminator**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **template**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **gain**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **feedback_controller**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **discriminating_pulse_counter**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **timestamp_mod**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+

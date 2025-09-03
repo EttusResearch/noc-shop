@@ -1,10 +1,21 @@
 # The NoC Shop
 
+Welcome to the NoC Shop! This is a collection RFNoC blocks you can use in your applications.
+
+Check out the following repositories containing RFNoC blocks:
+
+
+-  [NI / Ettus Research RFNoC OOT Blocks](autogen/rfnoc-oot-blocks): Out-of-tree RFNoC blocks extending UHD
+
+-  [Core UHD RFNoC Blocks](autogen/uhd)
+
+-  [GSI Beam Exciter](autogen/rfnoc-beam-exciter)
 
 ```{toctree}
 :caption: Noc Shop
+:hidden:
 
-autogen/list
+autogen/rfnoc-oot-blocks
+autogen/uhd
+autogen/rfnoc-beam-exciter
 ```
-
-

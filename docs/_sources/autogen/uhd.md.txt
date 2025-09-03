@@ -1,0 +1,114 @@
+
+# Core UHD RFNoC Blocks
+
+**Home page:** [github.com/EttusResearch/uhd/](https://github.com/EttusResearch/uhd/)
+
+**Git repository:** [/home/mbr0wn/src/uhddev](git+/home/mbr0wn/src/uhddev)
+
+## RFNoC Blocks
+
+
+- **axi_ram_fifo**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **null_src_sink**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **split_stream**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **ddc**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **vector_iir**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **license_check**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **addsub**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **logpwr**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **switchboard**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **fir_filter**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **fosphor**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **window**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **fft**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **keep_one_in_n**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **moving_avg**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **radio**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **replay**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **siggen**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **duc**: No description available
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+### RFNoC Modules
+
+- **device_dna**
+
+### RFNoC Transport Adapters
+
+- **chdr_dma**
+- **x4xx_eth**
+
