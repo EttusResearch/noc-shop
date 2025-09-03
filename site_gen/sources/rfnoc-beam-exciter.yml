@@ -1,0 +1,8 @@
+source: https://git.gsi.de/p.niedermayer/exciter.git
+gitbranch: dev
+title: GSI Beam Exciter
+short_title: rfnoc-beam-exciter
+url: https://git.gsi.de/p.niedermayer/exciter/
+rfnoc_path: rfnoc-beam_exciter/
+license: GPLv3
+hdl_license: LGPLv3

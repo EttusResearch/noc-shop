@@ -8,69 +8,23 @@ import subprocess
 import mako.template
 
 
-LIST_TEMPLATE_MD = mako.template.Template("""# List of NOC Shop Items
+def sanitize_url(url_str):
+    """Sanitize a URL for display in a Markdown file.
 
-% if scan_results:
-% for repo_name, repo_info in scan_results.items():
-<%
-    manifest = repo_info.get('manifest') or {}
-    source_info = sources.get(repo_name) or {}
-    
-    # Use source file as fallback for manifest values
-    title = manifest.get('title') or source_info.get('title') or repo_name
-    brief = manifest.get('brief') or source_info.get('brief')
-    authors = manifest.get('authors') or source_info.get('authors')
-    license_info = manifest.get('license') or source_info.get('license')
-    url = source_info.get('url')
-%>
-${'##'} ${title}
+    This should return the string url_str, but in a way that it is nicer to
+    display. This means:
+    - Remove any http://, https:// prefix
+    - Remove a git+ prefix
+    """
+    url_str = url_str.replace('http://', '').replace('https://', '').replace('git+', '')
+    return url_str
 
-% if brief:
-**Brief:** ${brief}
 
-% endif
-% if url:
-**Repository:** [${url}](${url})
-
-% endif
-% if authors:
-**Authors:** ${', '.join(authors) if isinstance(authors, list) else authors}
-
-% endif
-% if license_info:
-**License:** ${license_info}
-
-% endif
-% if repo_info.get('rfnoc_blocks'):
-${'###'} RFNoC Blocks
-
-% for block in repo_info['rfnoc_blocks']:
-- **${block['config'].get('name', block['name'])}**: ${block['config'].get('brief', 'No description available')}
-% endfor
-
-% endif
-% if repo_info.get('rfnoc_modules'):
-${'###'} RFNoC Modules
-
-% for module in repo_info['rfnoc_modules']:
-- **${module['name']}**
-% endfor
-
-% endif
-% if repo_info.get('rfnoc_transport_adapters'):
-${'###'} RFNoC Transport Adapters
-
-% for adapter in repo_info['rfnoc_transport_adapters']:
-- **${adapter['name']}**
-% endfor
-
-% endif
-
-% endfor
-% else:
-No repositories found or scanned.
-% endif
-""")
+def render_template_to_file(data, template_path, out_path):
+    """Render a Mako template to a file."""
+    template = mako.template.Template(filename=template_path)
+    with open(out_path, 'w') as f:
+        f.write(template.render(**data, sanitize_url=sanitize_url))
 
 
 def read_source_files():
@@ -104,14 +58,14 @@ def clone_repositories(source_dict, clone_dir=None):
     
     Args:
         source_dict (dict): Dictionary from read_source_files() with repo configurations
-        clone_dir (str, optional): Directory to clone into. Defaults to 'cloned_repos' 
+        clone_dir (str, optional): Directory to clone into. Defaults to 'build/cloned_repos' 
                                   in the same directory as this script.
     
     Returns:
         dict: Dictionary with repo names as keys and clone status/path as values
     """
     if clone_dir is None:
-        clone_dir = os.path.join(os.path.dirname(__file__), 'cloned_repos')
+        clone_dir = os.path.join(os.path.dirname(__file__), '..', 'build', 'cloned_repos')
     
     # Create clone directory if it doesn't exist
     os.makedirs(clone_dir, exist_ok=True)
@@ -189,18 +143,18 @@ def clone_repositories(source_dict, clone_dir=None):
     return results
 
 
-def scan_cloned_repositories(clone_dir=None):
+def scan_cloned_repositories(clone_dir=None, sources=None):
     """Scan all cloned repositories and extract information about RFNoC blocks.
     
     Args:
-        clone_dir (str, optional): Directory containing cloned repos. Defaults to 'cloned_repos'
-                                  in the same directory as this script.
+        clone_dir (str, optional): Directory containing cloned repos. Defaults to 'build/cloned_repos'
+        sources (dict, optional): Source configurations to use as defaults for manifest values.
     
     Returns:
         dict: Dictionary with repo names as keys and discovered information as values
     """
     if clone_dir is None:
-        clone_dir = os.path.join(os.path.dirname(__file__), 'cloned_repos')
+        clone_dir = os.path.join(os.path.dirname(__file__), '..', 'build', 'cloned_repos')
     
     if not os.path.exists(clone_dir):
         return {}
@@ -224,11 +178,19 @@ def scan_cloned_repositories(clone_dir=None):
         }
         
         try:
-            # Check for manifest.yml
+            # Start with source file values as defaults
+            source_info = sources.get(repo_name, {}) if sources else {}
+            merged_manifest = source_info.copy()
+            
+            # Check for manifest.yml and merge with source defaults
             manifest_path = os.path.join(repo_path, 'manifest.yml')
             if os.path.exists(manifest_path):
                 with open(manifest_path, 'r') as f:
-                    repo_info['manifest'] = yaml.safe_load(f)
+                    manifest_data = yaml.safe_load(f) or {}
+                    # Manifest values override source values
+                    merged_manifest.update(manifest_data)
+            
+            repo_info['manifest'] = merged_manifest
             
             # Check for README.md
             readme_path = os.path.join(repo_path, 'README.md')
@@ -239,7 +201,9 @@ def scan_cloned_repositories(clone_dir=None):
                     repo_info['readme'] = ''.join(lines).strip()
             
             # Check for RFNoC structure
-            rfnoc_dir = os.path.join(repo_path, 'rfnoc')
+            # Use rfnoc_path from source config if provided, otherwise default to 'rfnoc'
+            rfnoc_subpath = source_info.get('rfnoc_path', 'rfnoc')
+            rfnoc_dir = os.path.join(repo_path, rfnoc_subpath)
             if os.path.exists(rfnoc_dir):
                 repo_info['has_rfnoc'] = True
                 
@@ -321,20 +285,70 @@ def generate_shop_list():
     
     # Scan cloned repositories for RFNoC components
     print("Scanning repositories...")
-    scan_results = scan_cloned_repositories()
+    scan_results = scan_cloned_repositories(sources=sources)
     
-    # Generate output
+    # Generate output directory
     out_dir = os.path.join(os.path.dirname(__file__), '..', 'source', 'autogen')
     os.makedirs(out_dir, exist_ok=True)
-    out_path_md = os.path.join(out_dir, 'list.md')
     
-    # Pass scan results to template for rendering
-    with open(out_path_md, 'w') as f_md:
-        f_md.write(LIST_TEMPLATE_MD.render(
-            sources=sources,
-            clone_results=clone_results,
-            scan_results=scan_results
-        ))
+    # Generate one file per repository
+    generated_files = []
+    oot_template_path = os.path.join(os.path.dirname(__file__), 'oot-page.md.mako')
     
-    print(f"Generated shop list at {out_path_md}")
+    for repo_name, repo_info in scan_results.items():
+        # Create filename based on repo name
+        filename = f"{repo_name}.md"
+        oot_page_path = os.path.join(out_dir, filename)
+        
+        # Render template for this repository using the helper function
+        render_template_to_file(
+            data={
+                'repo': repo_info,
+                'repo_name': repo_name
+            },
+            template_path=oot_template_path,
+            out_path=oot_page_path
+        )
+        
+        generated_files.append(filename)
+        print(f"Generated {filename}")
+    
+    # Generate index file with list of all repositories
+    index_template_path = os.path.join(os.path.dirname(__file__), 'index.md.mako')
+    index_path = os.path.join(out_dir, '..', 'index.md')
+    
+    render_template_to_file(
+        data={'scan_results': scan_results},
+        template_path=index_template_path,
+        out_path=index_path
+    )
+
+    print(f"Generated {len(generated_files)} repository pages and index at {out_dir}")
     return scan_results
+
+
+def main():
+    """Main function for running the script directly."""
+    try:
+        result = generate_shop_list()
+        print("\nSummary:")
+        print(f"Processed {len(result)} repositories:")
+        for repo_name, repo_info in result.items():
+            blocks_count = len(repo_info.get('rfnoc_blocks', []))
+            modules_count = len(repo_info.get('rfnoc_modules', []))
+            adapters_count = len(repo_info.get('rfnoc_transport_adapters', []))
+            print(f"  - {repo_name}: {blocks_count} blocks, {modules_count} modules, {adapters_count} adapters")
+        
+        print("\nGeneration completed successfully!")
+        
+    except Exception as e:
+        print(f"Error during generation: {e}")
+        import traceback
+        traceback.print_exc()
+        return 1
+    
+    return 0
+
+
+if __name__ == "__main__":
+    exit(main())
