@@ -30,7 +30,7 @@ ${'##'} RFNoC Blocks
 
 % for block in repo['rfnoc_blocks']:
 <%
-  block_brief = block['config'].get('brief', 'No description available')
+  block_brief = block['config'].get('description')
 %>
 - **${block['config'].get('name', block['name'])}**${ ": " + block_brief if block_brief else "" }
   - Software License: ${block['config'].get('license', license_info)}
@@ -42,16 +42,26 @@ ${'##'} RFNoC Blocks
 % if repo.get('rfnoc_modules'):
 ${'###'} RFNoC Modules
 
-% for module in repo['rfnoc_modules']:
-- **${module['name']}**
+% for block in repo['rfnoc_modules']:
+<%
+  block_brief = block['config'].get('description')
+%>
+- **${block['config'].get('name', block['name'])}**${ ": " + block_brief if block_brief else "" }
+  - Software License: ${block['config'].get('license', license_info)}
+  - HDL License: ${block['config'].get('hdl_license', hdl_license_info)}
 % endfor
 
 % endif
 % if repo.get('rfnoc_transport_adapters'):
 ${'###'} RFNoC Transport Adapters
 
-% for adapter in repo['rfnoc_transport_adapters']:
-- **${adapter['name']}**
+% for block in repo['rfnoc_transport_adapters']:
+<%
+  block_brief = block['config'].get('description')
+%>
+- **${block['config'].get('name', block['name'])}**${ ": " + block_brief if block_brief else "" }
+  - Software License: ${block['config'].get('license', license_info)}
+  - HDL License: ${block['config'].get('hdl_license', hdl_license_info)}
 % endfor
 
 % endif
