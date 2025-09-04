@@ -1,4 +1,4 @@
-source: git+/home/mbr0wn/src/uhddev
+source: https://github.com/EttusResearch/uhd.git
 gitbranch: master
 title: Core UHD RFNoC Blocks
 short_title: uhd-core-blocks
