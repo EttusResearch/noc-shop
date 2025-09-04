@@ -40,115 +40,141 @@
 <section id="rfnoc-blocks">
 <h2>RFNoC Blocks<a class="headerlink" href="#rfnoc-blocks" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><strong>axi_ram_fifo</strong>: No description available</p>
+<li><p><strong>DRAM FIFO</strong>: A large FIFO block that uses a device’s DRAM.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>null_src_sink</strong>: No description available</p>
+<li><p><strong>Null Source/Sink</strong>: The Null Source/Sink acts as a streaming endpoint, consuming all the incoming
+data, or a data generator. It is typically used for testing and debugging
+purposes.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>split_stream</strong>: No description available</p>
+<li><p><strong>Split Stream</strong>: The split stream block is used to duplicate data in RFNoC flow graphs.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>ddc</strong>: No description available</p>
+<li><p><strong>Digital Downconverter</strong>: This block combines an integer resampler (decimator) with a frequency
+shifter. It is often used directly after the radio block of a USRP to adapt
+center frequency (e.g., to provide an LO offset) and sampling rate.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>vector_iir</strong>: No description available</p>
+<li><p><strong>Vector IIR (Average)</strong>: The Vector IIR Block is an RFNoC block that implements an infinite
+impulse filter with a variable length delay line. It is useful for averaging
+consecutive power density values.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>license_check</strong>: No description available</p>
+<li><p><strong>License Checker</strong>: This block is used to read and evaluate license keys. It is used in combination
+with RFNoC blocks that require such keys.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>addsub</strong>: No description available</p>
+<li><p><strong>Add/Subtract</strong>: This block provides the sum and difference of two input channels. It also
+provides different types of implementations as an example.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>logpwr</strong>: No description available</p>
+<li><p><strong>Log Power</strong>: The Log Power Block is an RFNoC block that takes in a packet of signed
+16-bit complex samples and computes an estimate of 1024 * log2(i^2 + q^2),
+putting the result in the upper 16 bits of each 32-bit output sample.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>switchboard</strong>: No description available</p>
+<li><p><strong>Switchboard</strong>: This is a programmable router block that routes any single input to any
+single output. Routing is 1 to 1, that is, an input port can only be connected
+to one output port, and vice versa.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>fir_filter</strong>: No description available</p>
+<li><p><strong>FIR Filter</strong>: A programmable FIR filter block. The filter taps can be exchanged at runtime.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>fosphor</strong>: No description available</p>
+<li><p><strong>RFNoC Fosphor (F15) Block.</strong>: This block takes input from an FFT block and produces data for a histogram
+and waterfall. It should be combined with a graphical widget that displays
+the data correctly.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>window</strong>: No description available</p>
+<li><p><strong>Window Function</strong>: The Window Block is a windowing block for RFNoC that is intended to be
+used with the FFT block. The block can be configured with coefficients,
+by which the samples in each input packet are multiplied before begin
+output. The first sample of the first packet is multiplied by the first
+first coefficient, the second sample is multiplied by the second
+coefficient, and so on.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>fft</strong>: No description available</p>
+<li><p><strong>FFT</strong>: An FFT implementation that provides forward and inverse FFT, cyclic prefix
+insertion and removal, variable FFT sizes and different output formats.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>keep_one_in_n</strong>: No description available</p>
+<li><p><strong>Keep-One-In-N-Block</strong>: This block is a decimator block which either drops packets or individual samples,
+keeping one item out of every N, where N is a runtime-configurable value.
+This block can be useful after a vector-average block.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>moving_avg</strong>: No description available</p>
+<li><p><strong>Moving Average</strong>: The Moving Average block is an RFNoC block that computes the running average
+of an input data stream.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>radio</strong>: No description available</p>
+<li><p><strong>Radio</strong>: The radio-block is a hardware-dependent block which exposes access to a
+streaming engine as well as to the underlying hardware.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>replay</strong>: No description available</p>
+<li><p><strong>DRAM Replay/Capture</strong>: This block is used to capture data into DRAM and play it back from there.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>siggen</strong>: No description available</p>
+<li><p><strong>Signal Generator</strong>: The signal generator block can be used to produce signals of various types.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>duc</strong>: No description available</p>
+<li><p><strong>Digital Upconverter</strong>: This block combines an integer resampler (interpolator) with a frequency
+shifter. It is often used directly after the radio block of a USRP to adapt
+center frequency (e.g., to provide an LO offset) and sampling rate.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
@@ -158,14 +184,32 @@
 <section id="rfnoc-modules">
 <h3>RFNoC Modules<a class="headerlink" href="#rfnoc-modules" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>device_dna</strong></p></li>
+<li><p><strong>Device DNA Module</strong>: Exposes the FPGA’s device DNA as a data bus.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="rfnoc-transport-adapters">
 <h3>RFNoC Transport Adapters<a class="headerlink" href="#rfnoc-transport-adapters" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>chdr_dma</strong></p></li>
-<li><p><strong>x4xx_eth</strong></p></li>
+<li><p><strong>CHDR DMA</strong>: The DMA transport adapter directly connects the PL to the PS. The DMA engine
+itself is not part of the image core (it is always instantiated), so this
+transport adapter is mostly a passthrough.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
+<li><p><strong>USRP X4xx Ethernet Transport Adapter</strong>: The USRP X4xx devices must specify transport adapters explicitly for
+connectivity. This is the transport adapter for 10 and 100 GbE Ethernet.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
 </ul>
 </section>
 </section>

@@ -12,7 +12,9 @@ Out-of-tree RFNoC blocks extending UHD
 ## RFNoC Blocks
 
 
-- **Aurora Interface Block**: No description available
+- **Aurora Interface Block**: This block allows direct connection to another FPGA board using 100 Gigabit
+Aurora instead of Ethernet.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 

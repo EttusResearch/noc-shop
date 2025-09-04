@@ -8,107 +8,167 @@
 ## RFNoC Blocks
 
 
-- **axi_ram_fifo**: No description available
+- **DRAM FIFO**: A large FIFO block that uses a device's DRAM.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **null_src_sink**: No description available
+- **Null Source/Sink**: The Null Source/Sink acts as a streaming endpoint, consuming all the incoming
+data, or a data generator. It is typically used for testing and debugging
+purposes.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **split_stream**: No description available
+- **Split Stream**: The split stream block is used to duplicate data in RFNoC flow graphs.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **ddc**: No description available
+- **Digital Downconverter**: This block combines an integer resampler (decimator) with a frequency
+shifter. It is often used directly after the radio block of a USRP to adapt
+center frequency (e.g., to provide an LO offset) and sampling rate.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **vector_iir**: No description available
+- **Vector IIR (Average)**: The Vector IIR Block is an RFNoC block that implements an infinite
+impulse filter with a variable length delay line. It is useful for averaging
+consecutive power density values.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **license_check**: No description available
+- **License Checker**: This block is used to read and evaluate license keys. It is used in combination
+with RFNoC blocks that require such keys.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **addsub**: No description available
+- **Add/Subtract**: This block provides the sum and difference of two input channels. It also
+provides different types of implementations as an example.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **logpwr**: No description available
+- **Log Power**: The Log Power Block is an RFNoC block that takes in a packet of signed
+16-bit complex samples and computes an estimate of 1024 * log2(i^2 + q^2),
+putting the result in the upper 16 bits of each 32-bit output sample.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **switchboard**: No description available
+- **Switchboard**: This is a programmable router block that routes any single input to any
+single output. Routing is 1 to 1, that is, an input port can only be connected
+to one output port, and vice versa.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **fir_filter**: No description available
+- **FIR Filter**: A programmable FIR filter block. The filter taps can be exchanged at runtime.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **fosphor**: No description available
+- **RFNoC Fosphor (F15) Block.**: This block takes input from an FFT block and produces data for a histogram
+and waterfall. It should be combined with a graphical widget that displays
+the data correctly.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **window**: No description available
+- **Window Function**: The Window Block is a windowing block for RFNoC that is intended to be
+used with the FFT block. The block can be configured with coefficients,
+by which the samples in each input packet are multiplied before begin
+output. The first sample of the first packet is multiplied by the first
+first coefficient, the second sample is multiplied by the second
+coefficient, and so on.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **fft**: No description available
+- **FFT**: An FFT implementation that provides forward and inverse FFT, cyclic prefix
+insertion and removal, variable FFT sizes and different output formats.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **keep_one_in_n**: No description available
+- **Keep-One-In-N-Block**: This block is a decimator block which either drops packets or individual samples,
+keeping one item out of every N, where N is a runtime-configurable value.
+This block can be useful after a vector-average block.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **moving_avg**: No description available
+- **Moving Average**: The Moving Average block is an RFNoC block that computes the running average
+of an input data stream.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **radio**: No description available
+- **Radio**: The radio-block is a hardware-dependent block which exposes access to a
+streaming engine as well as to the underlying hardware.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **replay**: No description available
+- **DRAM Replay/Capture**: This block is used to capture data into DRAM and play it back from there.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **siggen**: No description available
+- **Signal Generator**: The signal generator block can be used to produce signals of various types.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
-- **duc**: No description available
+- **Digital Upconverter**: This block combines an integer resampler (interpolator) with a frequency
+shifter. It is often used directly after the radio block of a USRP to adapt
+center frequency (e.g., to provide an LO offset) and sampling rate.
+
   - Software License: GPLv3
   - HDL License: LGPLv3
 
 
 ### RFNoC Modules
 
-- **device_dna**
+
+- **Device DNA Module**: Exposes the FPGA's device DNA as a data bus.
+
+  - Software License: GPLv3
+  - HDL License: LGPLv3
 
 ### RFNoC Transport Adapters
 
-- **chdr_dma**
-- **x4xx_eth**
+
+- **CHDR DMA**: The DMA transport adapter directly connects the PL to the PS. The DMA engine
+itself is not part of the image core (it is always instantiated), so this
+transport adapter is mostly a passthrough.
+
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+- **USRP X4xx Ethernet Transport Adapter**: The USRP X4xx devices must specify transport adapters explicitly for
+connectivity. This is the transport adapter for 10 and 100 GbE Ethernet.
+
+  - Software License: GPLv3
+  - HDL License: LGPLv3
 
