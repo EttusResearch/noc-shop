@@ -5,7 +5,7 @@ Out-of-tree RFNoC blocks extending UHD
 
 **Home page:** [github.com/EttusResearch/rfnoc-oot-blocks](https://github.com/EttusResearch/rfnoc-oot-blocks)
 
-**Git repository:** [/home/mbr0wn/src/noc-shop/build/rfnoc-oot-blocks](git+/home/mbr0wn/src/noc-shop/build/rfnoc-oot-blocks)
+**Git repository:** [https://github.com/EttusResearch/rfnoc-oot-blocks.git](https://github.com/EttusResearch/rfnoc-oot-blocks.git)
 
 **Authors:** Ettus Research, an NI Brand
 

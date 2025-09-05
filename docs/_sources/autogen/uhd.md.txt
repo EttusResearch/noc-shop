@@ -3,7 +3,7 @@
 
 **Home page:** [github.com/EttusResearch/uhd/](https://github.com/EttusResearch/uhd/)
 
-**Git repository:** [/home/mbr0wn/src/uhddev](git+/home/mbr0wn/src/uhddev)
+**Git repository:** [https://github.com/EttusResearch/uhd.git](https://github.com/EttusResearch/uhd.git)
 
 ## RFNoC Blocks
 
