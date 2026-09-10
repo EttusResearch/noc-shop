@@ -8,22 +8,7 @@
 ## RFNoC Blocks
 
 
-- **multiply**
-  - Software License: GPLv3
-  - HDL License: LGPLv3
-
-
-- **pulse_counter_trigger**
-  - Software License: GPLv3
-  - HDL License: LGPLv3
-
-
 - **discriminator**
-  - Software License: GPLv3
-  - HDL License: LGPLv3
-
-
-- **template**
   - Software License: GPLv3
   - HDL License: LGPLv3
 
@@ -33,7 +18,22 @@
   - HDL License: LGPLv3
 
 
-- **feedback_controller**
+- **multiply**
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **template**
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **pulse_counter_trigger**
+  - Software License: GPLv3
+  - HDL License: LGPLv3
+
+
+- **timestamp_mod**
   - Software License: GPLv3
   - HDL License: LGPLv3
 
@@ -43,7 +43,7 @@
   - HDL License: LGPLv3
 
 
-- **timestamp_mod**
+- **feedback_controller**
   - Software License: GPLv3
   - HDL License: LGPLv3
 

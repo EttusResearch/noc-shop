@@ -1,21 +1,40 @@
 # The NoC Shop
 
-Welcome to the NoC Shop! This is a collection RFNoC blocks you can use in your applications.
+Welcome to the NoC Shop! This is a collection of RFNoC blocks you can use in your applications.
+
+## Win prizes! Join the competition!
+
+We are excited to announce a competition where you can win prizes by contributing your RFNoC blocks!
+See [the competition page](competition) for more details!
+
+## List of Blocks
 
 Check out the following repositories containing RFNoC blocks:
 
-
--  [NI / Ettus Research RFNoC OOT Blocks](autogen/rfnoc-oot-blocks): Out-of-tree RFNoC blocks extending UHD
 
 -  [Core UHD RFNoC Blocks](autogen/uhd)
 
 -  [GSI Beam Exciter](autogen/rfnoc-beam-exciter)
 
+-  [NI / Ettus Research RFNoC OOT Blocks](autogen/rfnoc-oot-blocks): Out-of-tree RFNoC blocks extending UHD
+
+
+Do you have RFNoC blocks you would like to add to this list? Take a look at our
+[instructions on adding out-of-tree modules to the NoC Shop](add_your_oot)!
+
 ```{toctree}
-:caption: Noc Shop
+:caption: RFNoC blocks
 :hidden:
 
-autogen/rfnoc-oot-blocks
 autogen/uhd
 autogen/rfnoc-beam-exciter
+autogen/rfnoc-oot-blocks
+```
+
+```{toctree}
+:caption: Get involved
+:hidden:
+
+competition
+add_your_oot
 ```

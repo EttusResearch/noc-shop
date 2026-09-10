@@ -1,1 +1,207 @@
-/* This file intentionally left blank. */
+/* Ettus Research-inspired presentation for the lightweight Alabaster theme. */
+
+:root {
+    --ettus-green: #92A580;
+    --ettus-green-dark: #627552;
+    --ettus-green-visited: #4c6143;
+    --ink: #263229;
+    --muted-ink: #5e685f;
+    --line: #dce3d8;
+    --soft-green: #f3f6f1;
+}
+
+body,
+div.body,
+div.sphinxsidebar,
+div.sphinxsidebar h3,
+div.sphinxsidebar h4,
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6,
+div.admonition p.admonition-title,
+div.sphinxsidebar input {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    color: var(--ink);
+    font-size: 16px;
+}
+
+div.document {
+    width: min(1100px, calc(100% - 48px));
+    margin-top: 36px;
+}
+
+div.bodywrapper {
+    margin-left: 240px;
+}
+
+div.sphinxsidebar {
+    width: 240px;
+    box-sizing: border-box;
+    border-right: 1px solid var(--line);
+    color: var(--muted-ink);
+}
+
+div.sphinxsidebarwrapper {
+    padding: 16px 24px 24px 0;
+}
+
+div.sphinxsidebarwrapper h1.logo {
+    border-left: 5px solid var(--ettus-green);
+    color: var(--ink);
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 22px;
+    padding-left: 12px;
+}
+
+div.sphinxsidebarwrapper h1.logo a,
+div.sphinxsidebar h3 a {
+    color: inherit;
+}
+
+div.sphinxsidebar p.blurb {
+    border-bottom: 1px solid var(--line);
+    color: var(--muted-ink);
+    font-size: 13px;
+    line-height: 1.5;
+    padding-bottom: 18px;
+}
+
+div.sphinxsidebar h3,
+div.sphinxsidebar h4 {
+    color: var(--ettus-green-dark);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-top: 24px;
+    text-transform: uppercase;
+}
+
+div.sphinxsidebar a:link {
+    border-bottom: 0;
+    color: var(--ettus-green-dark);
+}
+
+div.sphinxsidebar a:visited {
+    border-bottom: 0;
+    color: var(--ettus-green-visited);
+}
+
+div.sphinxsidebar a:hover,
+div.sphinxsidebar li.current>a {
+    color: var(--ettus-green-dark);
+}
+
+div.body {
+    color: var(--ink);
+    padding: 0 0 0 44px;
+}
+
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6 {
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+div.body h1 {
+    border-bottom: 3px solid var(--ettus-green);
+    font-size: 34px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+}
+
+div.body h2 {
+    border-bottom: 1px solid var(--line);
+    font-size: 25px;
+    padding-bottom: 8px;
+}
+
+a {
+    color: var(--ettus-green-dark);
+    text-decoration-color: var(--ettus-green);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+a:link,
+a.reference:link {
+    color: var(--ettus-green-dark);
+}
+
+a:visited,
+a.reference:visited {
+    color: var(--ettus-green-visited);
+}
+
+a.reference:link,
+a.footnote-reference:link {
+    border-bottom-color: var(--ettus-green);
+}
+
+a.reference:visited,
+a.footnote-reference:visited {
+    border-bottom-color: var(--ettus-green-visited);
+}
+
+a:hover,
+a:focus {
+    color: var(--ettus-green-dark);
+    text-decoration-color: var(--ettus-green-dark);
+}
+
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--ettus-green);
+    outline-offset: 3px;
+}
+
+div.admonition {
+    background: var(--soft-green);
+    border: 0;
+    border-left: 4px solid var(--ettus-green);
+    padding: 14px 20px;
+}
+
+div.highlight,
+dt:target,
+.highlight {
+    background: var(--soft-green);
+}
+
+@media screen and (max-width: 875px) {
+    div.document {
+        width: min(100% - 32px, 700px);
+        margin-top: 24px;
+    }
+
+    div.bodywrapper {
+        margin-left: 0;
+    }
+
+    div.sphinxsidebar {
+        border-bottom: 1px solid var(--line);
+        border-right: 0;
+        width: 100%;
+    }
+
+    div.sphinxsidebarwrapper {
+        padding: 0 0 18px;
+    }
+
+    div.body {
+        padding: 30px 0 0;
+    }
+}

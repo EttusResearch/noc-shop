@@ -6,22 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Core UHD RFNoC Blocks &#8212; NoC Shop  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=686e5160" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=cb25574f" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="GSI Beam Exciter" href="rfnoc-beam-exciter.html" />
-    <link rel="prev" title="NI / Ettus Research RFNoC OOT Blocks" href="rfnoc-oot-blocks.html" />
+    <link rel="prev" title="The NoC Shop" href="../index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
-
   
-  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head><body>
   
@@ -33,36 +31,50 @@
 
           <div class="body" role="main">
             
-  <section class="tex2jax_ignore mathjax_ignore" id="core-uhd-rfnoc-blocks">
+  <section id="core-uhd-rfnoc-blocks">
 <h1>Core UHD RFNoC Blocks<a class="headerlink" href="#core-uhd-rfnoc-blocks" title="Link to this heading">¶</a></h1>
 <p><strong>Home page:</strong> <a class="reference external" href="https://github.com/EttusResearch/uhd/">github.com/EttusResearch/uhd/</a></p>
-<p><strong>Git repository:</strong> <span class="xref myst">https://github.com/EttusResearch/uhd.git</span></p>
+<p><strong>Git repository:</strong> <a class="reference external" href="https://github.com/EttusResearch/uhd.git">github.com/EttusResearch/uhd.git</a></p>
 <section id="rfnoc-blocks">
 <h2>RFNoC Blocks<a class="headerlink" href="#rfnoc-blocks" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><strong>DRAM FIFO</strong>: A large FIFO block that uses a device’s DRAM.</p>
+<li><p><strong>DRAM FIFO</strong>: A large FIFO block that uses a device’s DRAM, or any other AXI RAM.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>Null Source/Sink</strong>: The Null Source/Sink acts as a streaming endpoint, consuming all the incoming
-data, or a data generator. It is typically used for testing and debugging
-purposes.</p>
+<li><p><strong>FIR Filter</strong>: A programmable finite impulse response (FIR) filter block. The filter taps can be exchanged at runtime.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>Split Stream</strong>: The split stream block is used to duplicate data in RFNoC flow graphs.</p>
+<li><p><strong>Signal Generator</strong>: The signal generator block can be used to produce signals of various types,
+such as constant, sinusoidal, and noise/random.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>Digital Downconverter</strong>: This block combines an integer resampler (decimator) with a frequency
-shifter. It is often used directly after the radio block of a USRP to adapt
+<li><p><strong>RFNoC Fosphor (F15)</strong>: This block takes input from an FFT block and produces data for a histogram
+and waterfall. It should be combined with a graphical widget that displays
+the data correctly.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
+<li><p><strong>Digital Upconverter</strong>: This block combines an integer resampler (interpolator) with a frequency
+shifter. It is often used directly before the radio block of a USRP to adapt
 center frequency (e.g., to provide an LO offset) and sampling rate.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
+<li><p><strong>License Checker</strong>: This block is used to read and evaluate license keys. It is used in combination
+with RFNoC blocks that require such keys.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
@@ -76,8 +88,33 @@ consecutive power density values.</p>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>License Checker</strong>: This block is used to read and evaluate license keys. It is used in combination
-with RFNoC blocks that require such keys.</p>
+<li><p><strong>FFT</strong>: An FFT implementation that provides forward and inverse FFT, cyclic prefix
+insertion and removal, variable FFT sizes and different output formats.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
+<li><p><strong>Digital Downconverter</strong>: This block combines an integer resampler (decimator) with a frequency
+shifter. It is often used directly after the radio block of a USRP to adapt
+center frequency (e.g., to provide an LO offset) and sampling rate.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
+<li><p><strong>Window Function</strong>: The Window Block is a windowing block that is intended to be
+used with the FFT block. The block can be configured with coefficients,
+by which the samples in each input packet are multiplied before beginning
+output. The first sample of the first packet is multiplied by the
+first coefficient, the second sample is multiplied by the second
+coefficient, and so on.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
+<li><p><strong>Split Stream</strong>: The split stream block is used to duplicate data in RFNoC flow graphs.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
@@ -90,9 +127,29 @@ provides different types of implementations as an example.</p>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>Log Power</strong>: The Log Power Block is an RFNoC block that takes in a packet of signed
-16-bit complex samples and computes an estimate of 1024 * log2(i^2 + q^2),
-putting the result in the upper 16 bits of each 32-bit output sample.</p>
+<li><p><strong>Keep-One-In-N</strong>: This block is a decimator block which either drops packets or individual samples,
+keeping one item out of every N, where N is a runtime-configurable value.
+This block can be useful after a vector-average block.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
+<li><p><strong>Radio</strong>: The Radio block is a hardware-dependent block that exposes access to the
+RF data interface of the underlying hardware and supports streaming to/from this interface on demand.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
+<li><p><strong>Moving Average</strong>: The Moving Average block is an RFNoC block that computes the running average
+of an input data stream.</p>
+<ul>
+<li><p>Software License: GPLv3</p></li>
+<li><p>HDL License: LGPLv3</p></li>
+</ul>
+</li>
+<li><p><strong>DRAM Replay/Capture</strong>: This block is used to capture data into DRAM and play it back from there.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
@@ -106,75 +163,17 @@ to one output port, and vice versa.</p>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>FIR Filter</strong>: A programmable FIR filter block. The filter taps can be exchanged at runtime.</p>
+<li><p><strong>Null Source/Sink</strong>: The Null Source/Sink acts as a streaming endpoint, consuming all the incoming
+data, generating data, or looping back data. It is typically used for testing and debugging
+purposes.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>RFNoC Fosphor (F15) Block.</strong>: This block takes input from an FFT block and produces data for a histogram
-and waterfall. It should be combined with a graphical widget that displays
-the data correctly.</p>
-<ul>
-<li><p>Software License: GPLv3</p></li>
-<li><p>HDL License: LGPLv3</p></li>
-</ul>
-</li>
-<li><p><strong>Window Function</strong>: The Window Block is a windowing block for RFNoC that is intended to be
-used with the FFT block. The block can be configured with coefficients,
-by which the samples in each input packet are multiplied before begin
-output. The first sample of the first packet is multiplied by the first
-first coefficient, the second sample is multiplied by the second
-coefficient, and so on.</p>
-<ul>
-<li><p>Software License: GPLv3</p></li>
-<li><p>HDL License: LGPLv3</p></li>
-</ul>
-</li>
-<li><p><strong>FFT</strong>: An FFT implementation that provides forward and inverse FFT, cyclic prefix
-insertion and removal, variable FFT sizes and different output formats.</p>
-<ul>
-<li><p>Software License: GPLv3</p></li>
-<li><p>HDL License: LGPLv3</p></li>
-</ul>
-</li>
-<li><p><strong>Keep-One-In-N-Block</strong>: This block is a decimator block which either drops packets or individual samples,
-keeping one item out of every N, where N is a runtime-configurable value.
-This block can be useful after a vector-average block.</p>
-<ul>
-<li><p>Software License: GPLv3</p></li>
-<li><p>HDL License: LGPLv3</p></li>
-</ul>
-</li>
-<li><p><strong>Moving Average</strong>: The Moving Average block is an RFNoC block that computes the running average
-of an input data stream.</p>
-<ul>
-<li><p>Software License: GPLv3</p></li>
-<li><p>HDL License: LGPLv3</p></li>
-</ul>
-</li>
-<li><p><strong>Radio</strong>: The radio-block is a hardware-dependent block which exposes access to a
-streaming engine as well as to the underlying hardware.</p>
-<ul>
-<li><p>Software License: GPLv3</p></li>
-<li><p>HDL License: LGPLv3</p></li>
-</ul>
-</li>
-<li><p><strong>DRAM Replay/Capture</strong>: This block is used to capture data into DRAM and play it back from there.</p>
-<ul>
-<li><p>Software License: GPLv3</p></li>
-<li><p>HDL License: LGPLv3</p></li>
-</ul>
-</li>
-<li><p><strong>Signal Generator</strong>: The signal generator block can be used to produce signals of various types.</p>
-<ul>
-<li><p>Software License: GPLv3</p></li>
-<li><p>HDL License: LGPLv3</p></li>
-</ul>
-</li>
-<li><p><strong>Digital Upconverter</strong>: This block combines an integer resampler (interpolator) with a frequency
-shifter. It is often used directly after the radio block of a USRP to adapt
-center frequency (e.g., to provide an LO offset) and sampling rate.</p>
+<li><p><strong>Log Power</strong>: The Log Power Block is an RFNoC block that takes in a packet of signed
+16-bit complex samples and computes an estimate of 1024 * log2(i^2 + q^2),
+putting the result in the upper 16 bits of each 32-bit output sample.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
@@ -195,16 +194,16 @@ center frequency (e.g., to provide an LO offset) and sampling rate.</p>
 <section id="rfnoc-transport-adapters">
 <h3>RFNoC Transport Adapters<a class="headerlink" href="#rfnoc-transport-adapters" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p><strong>CHDR DMA</strong>: The DMA transport adapter directly connects the PL to the PS. The DMA engine
-itself is not part of the image core (it is always instantiated), so this
-transport adapter is mostly a passthrough.</p>
+<li><p><strong>USRP X4xx Ethernet Transport Adapter</strong>: The USRP X4xx devices must specify transport adapters explicitly for
+connectivity. This is the transport adapter for 10 and 100 GbE Ethernet.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
 </ul>
 </li>
-<li><p><strong>USRP X4xx Ethernet Transport Adapter</strong>: The USRP X4xx devices must specify transport adapters explicitly for
-connectivity. This is the transport adapter for 10 and 100 GbE Ethernet.</p>
+<li><p><strong>CHDR DMA</strong>: The DMA transport adapter directly connects the PL to the PS. The DMA engine
+itself is not part of the image core (it is always instantiated), so this
+transport adapter is mostly a passthrough.</p>
 <ul>
 <li><p>Software License: GPLv3</p></li>
 <li><p>HDL License: LGPLv3</p></li>
@@ -220,30 +219,22 @@ connectivity. This is the transport adapter for 10 and 100 GbE Ethernet.</p>
           
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <h1 class="logo"><a href="../index.html">NoC Shop</a></h1>
 
 
 
+<p class="blurb">RFNoC blocks from the Ettus Research ecosystem</p>
 
 
 
 
 
 
-<search id="searchbox" style="display: none" role="search">
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Noc Shop</span></p>
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">RFNoC blocks</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="rfnoc-oot-blocks.html">NI / Ettus Research RFNoC OOT Blocks</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Core UHD RFNoC Blocks</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#rfnoc-blocks">RFNoC Blocks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rfnoc-modules">RFNoC Modules</a></li>
@@ -253,17 +244,33 @@ connectivity. This is the transport adapter for 10 and 100 GbE Ethernet.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="rfnoc-beam-exciter.html">GSI Beam Exciter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rfnoc-oot-blocks.html">NI / Ettus Research RFNoC OOT Blocks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get involved</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../competition.html">The Noc Shop Competition!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../add_your_oot.html">Adding your RFNoC Blocks to the Noc Shop</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="rfnoc-oot-blocks.html" title="previous chapter">NI / Ettus Research RFNoC OOT Blocks</a></li>
+      <li>Previous: <a href="../index.html" title="previous chapter">The NoC Shop</a></li>
       <li>Next: <a href="rfnoc-beam-exciter.html" title="next chapter">GSI Beam Exciter</a></li>
   </ul></li>
 </ul>
 </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -277,11 +284,7 @@ connectivity. This is the transport adapter for 10 and 100 GbE Ethernet.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &#169;2025, Ettus Research.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      &copy;2026 NI. All Rights Reserved.
       
       |
       <a href="../_sources/autogen/uhd.md.txt"
