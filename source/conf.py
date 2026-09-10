@@ -15,7 +15,7 @@ from gen_noc_shop_list import generate_shop_list
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'NoC Shop'
-copyright = '2025, Ettus Research'
+copyright = '2026 NI. All Rights Reserved'
 author = 'Ettus Research'
 
 # -- General configuration ---------------------------------------------------
@@ -47,6 +47,10 @@ source_suffix = {
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+html_theme_options = {
+    'description': 'RFNoC blocks from the Ettus Research ecosystem',
+    'show_powered_by': 'false',
+}
 
 
 # -- Custom setup function --------------------------------------------------
