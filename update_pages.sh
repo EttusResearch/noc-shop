@@ -1,5 +1,5 @@
 #!/bin/bash
-make html
+make html || exit
 git checkout pages
 git rm -r docs
 cp -r build/html docs
