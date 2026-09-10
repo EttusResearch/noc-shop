@@ -93,7 +93,26 @@ def clone_repositories(source_dict, clone_dir=None):
         repo_dir = os.path.join(clone_dir, repo_name)
         
         try:
-            # Remove existing directory if it exists
+            # Reuse an existing checkout with a pull instead of re-cloning
+            if os.path.exists(os.path.join(repo_dir, '.git')):
+                result = subprocess.run(
+                    ['git', 'pull'],
+                    cwd=repo_dir,
+                    capture_output=True,
+                    text=True,
+                    check=True
+                )
+
+                results[repo_name] = {
+                    'status': 'success',
+                    'path': repo_dir,
+                    'branch': branch or 'default',
+                    'url': git_url
+                }
+                print(f"Successfully updated {repo_name} at {repo_dir}")
+                continue
+
+            # Remove existing (non-git) directory if it exists
             if os.path.exists(repo_dir):
                 import shutil
                 shutil.rmtree(repo_dir)
@@ -128,10 +147,10 @@ def clone_repositories(source_dict, clone_dir=None):
         except subprocess.CalledProcessError as e:
             results[repo_name] = {
                 'status': 'error', 
-                'message': f"Git clone failed: {e.stderr}",
+                'message': f"Git command failed: {e.stderr}",
                 'url': git_url
             }
-            print(f"Failed to clone {repo_name}: {e.stderr}")
+            print(f"Failed to update/clone {repo_name}: {e.stderr}")
         except Exception as e:
             results[repo_name] = {
                 'status': 'error', 
