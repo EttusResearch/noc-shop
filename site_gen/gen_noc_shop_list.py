@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-""" Auto-generate a list of NOC Shop items for Sphinx to include."""
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""Auto-generate a list of NOC Shop items for Sphinx to include."""
 
 import os
 import glob

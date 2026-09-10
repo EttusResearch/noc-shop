@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 """Interactively create a new site_gen/sources/*.yml entry for the Noc Shop.
 
 See source/add_your_oot.md for the full instructions on how to add your
