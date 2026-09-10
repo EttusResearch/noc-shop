@@ -2,6 +2,13 @@
 
 Welcome to the NoC Shop! This is a collection of RFNoC blocks you can use in your applications.
 
+${"##"} Win prizes! Join the competition!
+
+We are excited to announce a competition where you can win prizes by contributing your RFNoC blocks!
+See [the competition page](competition) for more details!
+
+${"##"} List of Blocks
+
 Check out the following repositories containing RFNoC blocks:
 
 % for repo_name, repo_info in scan_results.items():
@@ -23,12 +30,18 @@ Do you have RFNoC blocks you would like to add to this list? Take a look at our
 [instructions on adding out-of-tree modules to the NoC Shop](add_your_oot)!
 
 ```{toctree}
-:caption: Noc Shop
+:caption: RFNoC blocks
 :hidden:
 
 % for repo_name, repo_info in scan_results.items():
 autogen/${repo_name}
 % endfor
+```
 
+```{toctree}
+:caption: Get involved
+:hidden:
+
+competition
 add_your_oot
 ```

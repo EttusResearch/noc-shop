@@ -1,0 +1,16 @@
+# The Noc Shop Competition!
+
+Join the Noc Shop Competition and win some awesome prizes (prizes will be announced at GRCon '26)!
+
+To win, you need to do the following:
+
+1. Develop an out-of-tree module with new RFNoC Blocks
+2. Submit your block (or blocks) for inclusion in the Noc Shop by 3/10/27 (March 10th). See the [instructions on adding blocks](add_your_oot) for details.
+3. That's it!
+
+The NI team will pick blocks in 2 categories:
+
+- Most creative block: Here you can go crazy! Show us what RFNoC can do that no one expected.
+- Most impactful contribution: Do you have RFNoC blocks that really help others with their SDR work?
+
+The top winners will get a brand new `REDACTED UNTIL GRCON`!
