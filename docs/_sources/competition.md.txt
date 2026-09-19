@@ -13,4 +13,7 @@ The NI team will pick blocks in 2 categories:
 - Most creative block: Here you can go crazy! Show us what RFNoC can do that no one expected.
 - Most impactful contribution: Do you have RFNoC blocks that really help others with their SDR work?
 
-The top winners will get a brand new `REDACTED UNTIL GRCON`!
+The top winners from each category will get a brand new USRP B310!
+
+(Some restrictions apply: Winners must have a shipping address in a region
+into which NI can ship goods).
